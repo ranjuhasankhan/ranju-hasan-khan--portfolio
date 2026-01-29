@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranju Hasan Khan - Full-Stack Developer & Peace Advocate</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-secondary: #151a35;
+            --accent-cyan: #00ffff;
+            --accent-magenta: #ff00ff;
+            --accent-yellow: #ffff00;
+            --text-primary: #ffffff;
+            --text-secondary: #a8b2d1;
+            --card-bg: rgba(21, 26, 53, 0.8);
+            --glow-cyan: rgba(0, 255, 255, 0.3);
+            --glow-magenta: rgba(255, 0, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Grid Background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridScroll 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes gridScroll {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            50% { transform: translateY(-80vh) translateX(20vw); opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) translateX(40vw); opacity: 0; }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glitch-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            position: relative;
+            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-magenta), var(--accent-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glitchAnim 3s infinite;
+        }
+
+        @keyframes glitchAnim {
+            0%, 100% { text-shadow: 0 0 20px var(--glow-cyan); }
+            25% { text-shadow: -2px 0 var(--accent-cyan), 2px 2px var(--accent-magenta); }
+            50% { text-shadow: 2px 0 var(--accent-magenta), -2px -2px var(--accent-cyan); }
+            75% { text-shadow: 0 0 30px var(--glow-magenta); }
+        }
+
+        .subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--accent-cyan);
+            margin: 1rem 0;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        .typing-effect {
+            display: inline-block;
+            border-right: 3px solid var(--accent-cyan);
+            padding-right: 5px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 49% { border-color: var(--accent-cyan); }
+            50%, 100% { border-color: transparent; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .cta-buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid var(--accent-cyan);
+            background: transparent;
+            color: var(--accent-cyan);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-cyan);
+            transition: all 0.3s;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: var(--bg-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--glow-cyan);
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn-secondary {
+            border-color: var(--accent-magenta);
+            color: var(--accent-magenta);
+        }
+
+        .btn-secondary::before {
+            background: var(--accent-magenta);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 10px 30px var(--glow-magenta);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            transform: translateY(-100%);
+            animation: slideDown 0.5s ease-out 1.5s forwards;
+        }
+
+        @keyframes slideDown {
+            to { transform: translateY(0); }
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Content Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            margin: 6rem 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-magenta));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: all 0.5s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--glow-cyan);
+            border-color: var(--accent-cyan);
+        }
+
+        .about-card:hover::before {
+            left: 100%;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+        }
+
+        /* Tech Stack */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tech-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 0, 255, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--glow-magenta), transparent);
+            transform: translate(-50%, -50%);
+            transition: all 0.5s;
+            border-radius: 50%;
+        }
+
+        .tech-item:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-magenta);
+            box-shadow: 0 10px 30px var(--glow-magenta);
+        }
+
+        .tech-item:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+
+        .tech-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--accent-magenta);
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-magenta), var(--accent-yellow));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 0;
+        }
+
+        .stat-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 50px rgba(0, 255, 255, 0.3);
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Peace Section */
+        .peace-section {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .peace-section::before {
+            content: '🕊️';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.03;
+            right: -5rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .peace-quote {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-style: italic;
+            text-align: center;
+            color: var(--accent-yellow);
+            margin: 2rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: block;
+        }
+
+        .contact-item:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px var(--glow-cyan);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Code Block */
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            overflow-x: auto;
+        }
+
+        .code-line {
+            color: var(--accent-cyan);
+            line-height: 1.8;
+        }
+
+        .code-comment {
+            color: var(--text-secondary);
+        }
+
+        /* Skills Pills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+
+        .skill-pill {
+            background: var(--card-bg);
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 25px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .skill-pill:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px var(--glow-cyan);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 6rem;
+            border-top: 2px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-magenta);
+            text-shadow: 0 0 10px var(--glow-magenta);
+        }
+
+        /* Back to Top */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s;
+            z-index: 1000;
+            font-weight: 900;
+        }
+
+        #backToTop.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        #backToTop:hover {
+            background: var(--accent-magenta);
+            box-shadow: 0 0 30px var(--glow-magenta);
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 80vh;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="particles" id="particles"></div>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#tech">Tech Stack</a></li>
+            <li><a href="#stats">GitHub</a></li>
+            <li><a href="#peace">Peace</a></li>
+            <li><a href="#contact">Connect</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="glitch-wrapper">
+                <h1 class="glitch">Ranju Hasan Khan</h1>
+            </div>
+            <p class="subtitle">
+                <span class="typing-effect">Full-Stack Developer | International Speaker | Peace Advocate 🕊️</span>
+            </p>
+            <div class="cta-buttons">
+                <a href="#about" class="btn">Explore Profile</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">💻</div>
+                    <h3 class="card-title">Full-Stack Developer</h3>
+                    <p>Specializing in modern, scalable web applications using the MERN stack (MongoDB, Express.js, React, Node.js). Expert in building responsive interfaces, designing intuitive user experiences, and implementing robust server-side solutions that bring innovative ideas to life.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🌍</div>
+                    <h3 class="card-title">International Speaker</h3>
+                    <p>Passionate advocate for world peace, using technology and communication to bridge divides and create meaningful global connections. Speaking at international forums to promote peace, understanding, and collaborative solutions.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🚀</div>
+                    <h3 class="card-title">Innovation Focus</h3>
+                    <p>Dedicated to using technology and empathy to create a better, more connected world through innovative solutions and collaborative projects. Constantly learning and exploring new technologies to stay at the cutting edge.</p>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-line"><span class="code-comment">// My Developer Profile</span></div>
+                <div class="code-line">const ranju = {</div>
+                <div class="code-line">  &nbsp;&nbsp;role: "Full-Stack Developer",</div>
+                <div class="code-line">  &nbsp;&nbsp;stack: ["MongoDB", "Express.js", "React", "Node.js"],</div>
+                <div class="code-line">  &nbsp;&nbsp;learning: ["Full-Stack Development", "UI/UX Design", "Peace Advocacy"],</div>
+                <div class="code-line">  &nbsp;&nbsp;openTo: ["Web Development Projects", "Peace-driven Initiatives"],</div>
+                <div class="code-line">  &nbsp;&nbsp;mission: "Innovation + Empathy = Peaceful Future",</div>
+                <div class="code-line">  &nbsp;&nbsp;expertise: {</div>
+                <div class="code-line">  &nbsp;&nbsp;&nbsp;&nbsp;frontend: ["Next.js", "React", "Redux", "TailwindCSS"],</div>
+                <div class="code-line">  &nbsp;&nbsp;&nbsp;&nbsp;backend: ["Node.js", "Express", "MongoDB"],</div>
+                <div class="code-line">  &nbsp;&nbsp;&nbsp;&nbsp;tools: ["Firebase", "Vercel", "Git", "VS Code"],</div>
+                <div class="code-line">  &nbsp;&nbsp;&nbsp;&nbsp;design: ["Figma", "Adobe XD", "Canva"]</div>
+                <div class="code-line">  &nbsp;&nbsp;},</div>
+                <div class="code-line">  &nbsp;&nbsp;contact: "ranjuhsankhan@gmail.com",</div>
+                <div class="code-line">  &nbsp;&nbsp;whatsapp: "+880 1839696587",</div>
+                <div class="code-line">  &nbsp;&nbsp;philosophy: "Clean code, creative design, world peace"</div>
+                <div class="code-line">};</div>
+            </div>
+
+            <h3 style="color: var(--accent-cyan); font-family: 'Orbitron', sans-serif; text-align: center; margin: 3rem 0 2rem;">Core Competencies</h3>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">⚛️</div>
+                    <h3 class="card-title">Frontend Excellence</h3>
+                    <p>Expert in building responsive, user-friendly interfaces with React, Next.js, and modern CSS frameworks. Focused on creating seamless user experiences with attention to detail and performance optimization.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🔧</div>
+                    <h3 class="card-title">Backend Mastery</h3>
+                    <p>Proficient in server-side development with Node.js and Express.js. Skilled in database design and management with MongoDB, API development, and implementing secure authentication systems.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🎨</div>
+                    <h3 class="card-title">UI/UX Design</h3>
+                    <p>Strong design sensibility with experience in Figma, Adobe XD, and Canva. Creating intuitive interfaces that balance aesthetics with functionality and accessibility.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">Professional Skills</h2>
+            
+            <h3 style="color: var(--accent-cyan); font-family: 'Orbitron', sans-serif; text-align: center; margin: 2rem 0;">Development Skills</h3>
+            <div class="skills-container">
+                <div class="skill-pill">Full-Stack Development</div>
+                <div class="skill-pill">MERN Stack</div>
+                <div class="skill-pill">Responsive Design</div>
+                <div class="skill-pill">RESTful APIs</div>
+                <div class="skill-pill">Database Design</div>
+                <div class="skill-pill">Version Control (Git)</div>
+                <div class="skill-pill">Agile Methodology</div>
+                <div class="skill-pill">Problem Solving</div>
+            </div>
+
+            <h3 style="color: var(--accent-magenta); font-family: 'Orbitron', sans-serif; text-align: center; margin: 3rem 0 2rem;">Soft Skills</h3>
+            <div class="skills-container">
+                <div class="skill-pill">International Speaking</div>
+                <div class="skill-pill">Team Collaboration</div>
+                <div class="skill-pill">Project Management</div>
+                <div class="skill-pill">Creative Thinking</div>
+                <div class="skill-pill">Communication</div>
+                <div class="skill-pill">Leadership</div>
+                <div class="skill-pill">Peace Advocacy</div>
+                <div class="skill-pill">Cultural Awareness</div>
+            </div>
+
+            <h3 style="color: var(--accent-yellow); font-family: 'Orbitron', sans-serif; text-align: center; margin: 3rem 0 2rem;">Currently Learning</h3>
+            <div class="skills-container">
+                <div class="skill-pill">Advanced TypeScript</div>
+                <div class="skill-pill">System Design</div>
+                <div class="skill-pill">Cloud Architecture</div>
+                <div class="skill-pill">DevOps Practices</div>
+                <div class="skill-pill">AI/ML Integration</div>
+                <div class="skill-pill">Web3 Technologies</div>
+            </div>
+        </section>
+
+        <section id="tech">
+            <h2 class="section-title">Tech Stack</h2>
+            
+            <h3 style="color: var(--accent-cyan); font-family: 'Orbitron', sans-serif; text-align: center; margin: 2rem 0;">Programming Languages</h3>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">⚡</div>
+                    <div class="tech-name">TypeScript</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">📜</div>
+                    <div class="tech-name">JavaScript</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">🌐</div>
+                    <div class="tech-name">HTML5</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">🎨</div>
+                    <div class="tech-name">CSS3</div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--accent-magenta); font-family: 'Orbitron', sans-serif; text-align: center; margin: 3rem 0 2rem;">Front-End Development</h3>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">▲</div>
+                    <div class="tech-name">Next.js</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">⚛️</div>
+                    <div class="tech-name">React</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">🔄</div>
+                    <div class="tech-name">Redux</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">💨</div>
+                    <div class="tech-name">TailwindCSS</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">🅱️</div>
+                    <div class="tech-name">Bootstrap</div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--accent-yellow); font-family: 'Orbitron', sans-serif; text-align: center; margin: 3rem 0 2rem;">Back-End Development</h3>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">🟢</div>
+                    <div class="tech-name">Node.js</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">⚡</div>
+                    <div class="tech-name">Express.js</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">🍃</div>
+                    <div class="tech-name">MongoDB</div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--accent-cyan); font-family: 'Orbitron', sans-serif; text-align: center; margin: 3rem 0 2rem;">Tools & Deployment</h3>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">🔥</div>
+                    <div class="tech-name">Firebase</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">▲</div>
+                    <div class="tech-name">Vercel</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">💻</div>
+                    <div class="tech-name">VS Code</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">📦</div>
+                    <div class="tech-name">Git</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">🐙</div>
+                    <div class="tech-name">GitHub</div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--accent-magenta); font-family: 'Orbitron', sans-serif; text-align: center; margin: 3rem 0 2rem;">Design Tools</h3>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">🎨</div>
+                    <div class="tech-name">Figma</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">🖌️</div>
+                    <div class="tech-name">Adobe XD</div>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size: 3rem;">🎭</div>
+                    <div class="tech-name">Canva</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="stats">
+            <h2 class="section-title">GitHub Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Contributions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Repositories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Languages</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Learning</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <img src="https://github-readme-stats.vercel.app/api?username=ranjuhasankhan&show_icons=true&theme=radical&bg_color=0a0e27&title_color=00ffff&text_color=ffffff&icon_color=ff00ff" alt="GitHub Stats" style="max-width: 100%; border-radius: 10px; border: 2px solid var(--accent-cyan); margin: 1rem;">
+                
+                <img src="https://streak-stats.demolab.com?user=ranjuhasankhan&theme=radical&background=0a0e27&ring=00ffff&fire=ff00ff&currStreakLabel=ffff00" alt="GitHub Streak" style="max-width: 100%; margin: 1rem; border-radius: 10px; border: 2px solid var(--accent-magenta);">
+                
+                <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ranjuhasankhan&layout=compact&theme=radical&bg_color=0a0e27&title_color=00ffff&text_color=ffffff" alt="Top Languages" style="max-width: 100%; margin: 1rem; border-radius: 10px; border: 2px solid var(--accent-yellow);">
+            </div>
+
+            <h3 style="color: var(--accent-cyan); font-family: 'Orbitron', sans-serif; text-align: center; margin: 4rem 0 2rem;">What I'm Building</h3>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">🌐</div>
+                    <h3 class="card-title">Web Applications</h3>
+                    <p>Creating modern, scalable web applications with clean architecture, responsive design, and optimal performance using the latest web technologies.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🛠️</div>
+                    <h3 class="card-title">Developer Tools</h3>
+                    <p>Building tools and utilities that enhance developer productivity and streamline workflows for the development community.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🌍</div>
+                    <h3 class="card-title">Peace Tech</h3>
+                    <p>Developing technology solutions that promote global understanding, collaboration, and peaceful coexistence across cultures.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="peace">
+            <h2 class="section-title">World Peace Advocacy</h2>
+            <div class="peace-section">
+                <p class="peace-quote">
+                    "Passionate about Establishing World Peace through Technology, Empathy, and Global Collaboration"
+                </p>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--text-secondary); margin: 2rem 0;">
+                    As an International Speaker for World Peace 🕊️, I believe that innovation and empathy can work together to build a peaceful, sustainable future for all humanity. Technology is not just about code—it's about connecting people, fostering understanding, and creating solutions that serve the greater good.
+                </p>
+                <div class="about-grid" style="margin-top: 3rem;">
+                    <div class="about-card">
+                        <div class="card-icon">🤝</div>
+                        <h3 class="card-title">Global Collaboration</h3>
+                        <p>Working across borders to unite people through shared goals and mutual understanding. Building bridges through technology and communication.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">💡</div>
+                        <h3 class="card-title">Technology for Good</h3>
+                        <p>Leveraging digital innovation to solve humanitarian challenges and promote peace. Creating accessible solutions that empower communities worldwide.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">❤️</div>
+                        <h3 class="card-title">Empathy-Driven Development</h3>
+                        <p>Creating solutions that prioritize human connection and compassionate action. Technology with heart, designed to serve humanity's highest ideals.</p>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--accent-yellow); font-family: 'Orbitron', sans-serif; text-align: center; margin: 4rem 0 2rem;">My Peace Mission</h3>
+                <div class="code-block" style="border-color: var(--accent-yellow);">
+                    <div class="code-line"><span class="code-comment">// My Vision for a Peaceful World</span></div>
+                    <div class="code-line" style="color: var(--accent-yellow);">const peaceMission = {</div>
+                    <div class="code-line" style="color: var(--accent-yellow);">  &nbsp;&nbsp;vision: "A world united by technology and compassion",</div>
+                    <div class="code-line" style="color: var(--accent-yellow);">  &nbsp;&nbsp;approach: ["Dialogue", "Innovation", "Education", "Empathy"],</div>
+                    <div class="code-line" style="color: var(--accent-yellow);">  &nbsp;&nbsp;goals: [</div>
+                    <div class="code-line" style="color: var(--accent-yellow);">  &nbsp;&nbsp;&nbsp;&nbsp;"Bridge cultural divides through technology",</div>
+                    <div class="code-line" style="color: var(--accent-yellow);">  &nbsp;&nbsp;&nbsp;&nbsp;"Promote understanding through global platforms",</div>
+                    <div class="code-line" style="color: var(--accent-yellow);">  &nbsp;&nbsp;&nbsp;&nbsp;"Create solutions for humanitarian challenges",</div>
+                    <div class="code-line" style="color: var(--accent-yellow);">  &nbsp;&nbsp;&nbsp;&nbsp;"Inspire next generation of peace advocates"</div>
+                    <div class="code-line" style="color: var(--accent-yellow);">  &nbsp;&nbsp;],</div>
+                    <div class="code-line" style="color: var(--accent-yellow);">  &nbsp;&nbsp;belief: "Every line of code can contribute to a better world"</div>
+                    <div class="code-line" style="color: var(--accent-yellow);">};</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Connect With Me</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 3rem;">
+                Let's collaborate on exciting projects, discuss technology, or work together towards a more peaceful world. I'm always open to new opportunities and meaningful connections!
+            </p>
+            <div class="contact-grid">
+                <a href="https://www.linkedin.com/in/ranju-hasan-khan-5482952ba" class="contact-item" target="_blank">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-label">LinkedIn</div>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-secondary);">Professional Network</p>
+                </a>
+                <a href="https://github.com/ranjuhasankhan" class="contact-item" target="_blank">
+                    <div class="contact-icon">💻</div>
+                    <div class="contact-label">GitHub</div>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-secondary);">Open Source Projects</p>
+                </a>
+                <a href="https://www.facebook.com/hasanranjukhan" class="contact-item" target="_blank">
+                    <div class="contact-icon">📘</div>
+                    <div class="contact-label">Facebook</div>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-secondary);">Social Connection</p>
+                </a>
+                <a href="mailto:ranjuhsankhan@gmail.com" class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-label">Email</div>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-secondary);">ranjuhsankhan@gmail.com</p>
+                </a>
+                <a href="https://wa.me/8801839696587" class="contact-item" target="_blank">
+                    <div class="contact-icon">💬</div>
+                    <div class="contact-label">WhatsApp</div>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-secondary);">+880 1839696587</p>
+                </a>
+                <a href="https://www.buymeacoffee.com/" class="contact-item" target="_blank">
+                    <div class="contact-icon">☕</div>
+                    <div class="contact-label">Buy Me Coffee</div>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-secondary);">Support My Work</p>
+                </a>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem;">
+                <h3 style="color: var(--accent-cyan); font-family: 'Orbitron', sans-serif; margin-bottom: 1rem;">Open to Opportunities</h3>
+                <div class="skills-container">
+                    <div class="skill-pill">Freelance Projects</div>
+                    <div class="skill-pill">Full-Time Positions</div>
+                    <div class="skill-pill">Collaborations</div>
+                    <div class="skill-pill">Speaking Engagements</div>
+                    <div class="skill-pill">Open Source Contributions</div>
+                    <div class="skill-pill">Peace Initiatives</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p style="font-family: 'Orbitron', sans-serif; font-size: 1.5rem; margin-bottom: 1rem; background: linear-gradient(45deg, var(--accent-cyan), var(--accent-magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                Ranju Hasan Khan
+            </p>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem; font-family: 'JetBrains Mono', monospace;">
+                Full-Stack Developer | International Speaker | Peace Advocate
+            </p>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#tech">Tech Stack</a>
+                <a href="#stats">GitHub</a>
+                <a href="#peace">Peace</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2rem;">
+                © 2026 Ranju Hasan Khan. Building a better world through code and compassion.
+            </p>
+            <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 1rem; font-style: italic;">
+                "Innovation + Empathy = Peaceful Future"
+            </p>
+        </div>
+    </footer>
+
+    <button id="backToTop">↑</button>
+
+    <script>
+        // Generate particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll animation for sections
+        const sections = document.querySelectorAll('section');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Typing effect
+        const typingText = document.querySelector('.typing-effect');
+        const texts = [
+            'Full-Stack Developer | International Speaker | Peace Advocate 🕊️',
+            'MERN Stack Specialist | React Enthusiast | Node.js Expert',
+            'Building Technology for a Peaceful World 🌍',
+            'Innovation + Empathy = Better Future 💡'
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+            }
+
+            const typingSpeed = isDeleting ? 50 : 100;
+            setTimeout(type, typingSpeed);
+        }
+
+        setTimeout(type, 1000);
+    </script>
+</body>
+</html>
